@@ -1,17 +1,24 @@
 import React, { useEffect } from 'react';
+import CssBaseline from '@mui/material/CssBaseline';
 
 import usePlaylists from '../hooks/usePlaylists';
+import Navbar from '../components/navbar';
 
 const App = () => {
-    const { getPlayListById, playlists } = usePlaylists();
-    useEffect(() => {
-        getPlayListById('PL_XxuZqN0xVDHFj-ecFSU0SU-B0TuJRk9');
-    }, []);
+  const { playlists, getPlayListById , error, loading} = usePlaylists()
 
-    console.log(playlists)
+  console.log("Loading", loading)
+  console.log("PlayList", playlists)
+  console.log("Error", error)
+
+  const getPlayListId = (PlayListId) => {
+    getPlayListById(PlayListId)
+  }
+
   return (
     <>
-    
+      <CssBaseline />
+      <Navbar getPlayListId={getPlayListId}/>
     </>
   );
 }
