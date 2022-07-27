@@ -14,9 +14,6 @@ const App = () => {
     getPlayListById(PlayListId);
   };
 
-  console.log(playlists);
-  console.log(error);
-
   let playlistArray  = Object.values(playlists);
 
   return (

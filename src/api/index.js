@@ -9,7 +9,7 @@ const getPlayListItems = async (playListId, nextPageToken='', lists=[]) => {
     lists = [ ...lists, ...data.items ];
 
     if(data.nextPageToken) {
-        lists = getPlayList(playListId, data.nextPageToken, lists);
+        lists = getPlayListItems(playListId, data.nextPageToken, lists);
     }
 
     return lists;
@@ -37,7 +37,7 @@ const getPlayList = async (playListId) => {
         playListId,
         playListTitle,
         playListDescription,
-        playListThumnails: thumbnails.default,
+        playListThumnails: thumbnails.high,
         channelId,
         channelTitle,
         playlistItems

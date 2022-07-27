@@ -1,14 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import getPlayList from "../api";
+import storage from "../utils/storage";
+// import useLocalStorage from "./useLocalStorage";
 
+const STORAGE_KEY = import.meta.env.VITE_LOCALSTORAGE_KEY;
+const INITIAL_STATE = {
+    playlists: {},
+    favourites: [],
+    recentPlaylists: []
+}
+
+// TODO:: Implement useLocalStorag Hook
+
+/**
+ * Hook: usePlaylists()
+ * You have set STORAGE_KEY in your envirnment file
+ */
 const usePlaylists = () => {
-    const [state, setState] = useState({
-        playlists: {},
-        favourites: [],
-        recentPlaylists: []
-    });
+    const [state, setState] = useState(INITIAL_STATE);
     const [error, SetError] = useState('');
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
+
+    // const { localStorageState, setLocalStorageState } = useLocalStorage(INITIAL_STATE);
+
+    useEffect(() => {
+        const state = storage.get(STORAGE_KEY);
+        if(state) {
+            setState({ ...state });
+        }
+        // setState(localStorageState)
+    }, [])
+
+    useEffect(() => {
+        if(state !== INITIAL_STATE) {
+            storage.store(STORAGE_KEY, state)
+        }
+
+        // if(state !== INITIAL_STATE) {
+        //     setLocalStorageState({ ...state })
+        // }
+        
+    }, [state])
 
     const getPlayListById = async (playListId, force=false) => {
         if(state.playlists[playListId] && !force) {
