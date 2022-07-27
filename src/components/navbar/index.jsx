@@ -1,5 +1,6 @@
 import { useState } from "react";
-import {AppBar, Box, Toolbar, Typography,Button, Container, Stack } from "@mui/material";
+import { Link as RouterLink } from "react-router-dom";
+import {AppBar, Box, Toolbar, Typography,Button, Container, Stack, Link } from "@mui/material";
 
 import PlayListForm from "../playlist-form";
 
@@ -21,7 +22,9 @@ const Navbar = ({ getPlayListId }) => {
         <Container maxWidth={'lg'}>
           <Toolbar>
             <Stack sx={{ flexGrow: 1 }}>
-                <Typography variant="h4" color="inherit" component="div">Clean Youtube</Typography>
+              <Link to="/" component={RouterLink} sx={{ textDecoration: 'none', color: 'black' }}>
+                <Typography variant="h4" color={'#4a148c'}>Clean Youtube</Typography>
+              </Link>
             </Stack>
             <Button variant="contained" size="large" onClick={ handleClickOpen }>Add Playlist</Button>
             <PlayListForm open={open} handleClose={handleClose} getPlayListId={getPlayListId} />

@@ -1,8 +1,10 @@
 import * as React from "react";
 import { Button, Stack, Box, Card, CardMedia, CardContent, CardActions, Typography } from "@mui/material";
 import { PlayCircleOutline } from "@mui/icons-material";
+import { Link } from 'react-router-dom';
 
 const PlayListCardItem = ({
+    playerId,
     playListTitle,
     playListThumnails,
     channelTitle,
@@ -29,18 +31,14 @@ const PlayListCardItem = ({
                     : playListTitle
             }`}
         </Typography>
-        <Typography variant='body2' color='text.secondary'>
-            {channelTitle}
-        </Typography>
+        <Typography variant='body2' color='text.secondary'>{channelTitle}</Typography>
     </CardContent>
     <Box sx={{ flexGrow: 1 }}></Box>
     <CardActions disableSpacing>
-        <Button>
+        <Button to={`/player/${playerId}`} component={Link}>
             <Stack direction={'row'} spacing={1} alignItems={'center'}>
                 <PlayCircleOutline />
-                <Typography variant='body2' fontWeight={600}>
-                    Start Tutorial
-                </Typography>
+                <Typography variant='body2' fontWeight={600}>Start Tutorial</Typography>
             </Stack>
         </Button>
     </CardActions>
