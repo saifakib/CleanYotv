@@ -30,6 +30,7 @@ const getPlayList = async (playListId) => {
 			title,
 			description,
 			thumbnail: medium,
+            contentDetails: item.contentDetails
 		};
 	});
     
