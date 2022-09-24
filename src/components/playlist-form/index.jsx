@@ -21,11 +21,6 @@ const PlayListForm = ({ open, handleClose, getPlayListId }) => {
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle>Add Playlist</DialogTitle>
         <DialogContent>
-          <DialogContentText>
-            To add a new playlist please insert the playlist id or
-			playlist link. Please make sure the link is correct.
-			Otherwise we won't able to fetch the playlist information. 
-          </DialogContentText>
           <TextField
             autoFocus
             margin='dense'
