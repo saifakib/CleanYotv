@@ -1,8 +1,9 @@
 import { useState, useEffect } from "react";
-import { Button, Stack, Box, Card, CardMedia, CardContent, CardActions, Typography } from "@mui/material";
+import { Button, Stack, Box, Card, CardMedia, CardContent, CardActions, Typography, Container } from "@mui/material";
 import { PlayCircleOutline } from "@mui/icons-material";
 import { Link } from 'react-router-dom';
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 
 const PlayListCardItem = ({
@@ -13,7 +14,7 @@ const PlayListCardItem = ({
 }) => {
     const [isFavourite, setIsFavourite] = useState(false);
 
-    const [addToFavourite, removeFromFavourite] = useStoreActions((action) => [action.favourites.addToFavourites, action.favourites.removeFromFavourites]);
+    const [addToFavourite, removeFromFavourite, removePlaylists, removeFromRecent] = useStoreActions((action) => [action.favourites.addToFavourites, action.favourites.removeFromFavourites, action.playlists.removePlaylists, action.recentPlaylists.removeFromRecent]);
     const favourites = useStoreState((state) => state.favourites.items);
 
     useEffect(() => {
@@ -23,6 +24,12 @@ const PlayListCardItem = ({
     const handleFavourite = () => {
         isFavourite ? removeFromFavourite(playlistId) : addToFavourite(playlistId)
         setIsFavourite(!isFavourite);
+    }
+    const handleDelete = () => {
+       removePlaylists(playlistId)
+       removeFromFavourite(playlistId)
+       removeFromRecent(playlistId)
+
     }
 
     
@@ -49,14 +56,22 @@ const PlayListCardItem = ({
             </Stack>
         </Button>
         
-        <Button onClick={handleFavourite}>
-            {isFavourite ? (
-                <FavoriteIcon style={{ color: 'red' }} />
-            ) : (
-                <FavoriteIcon color="disabled"/>
-            )}
-            
-        </Button>
+        <Box sx={{
+          display: 'flex', justifyContent: 'flex-end'
+        }}>
+            <Button onClick={handleFavourite}>
+                {isFavourite ? (
+                    <FavoriteIcon style={{ color: 'red' }} />
+                ) : (
+                    <FavoriteIcon color="disabled"/>
+                )}
+                
+            </Button>
+            <Button onClick={handleDelete}>
+                <DeleteIcon />
+            </Button>
+        </Box>
+       
     </CardActions>
 </Card>
   );

@@ -6,6 +6,9 @@ const recentModel = persist({
     addToRecent: action((state, playListId) => {
         state.items.unshift(playListId);
         state.items.slice(0,8);
+    }),
+    removeFromRecent: action((state, playListId) => {
+        state.items = state.items.filter((item) => item != playListId)
     })
 });
 

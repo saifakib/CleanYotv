@@ -15,6 +15,9 @@ const playlistsModel = persist({
   addPlaylists: action((state, payload) => {
     state.data[payload.playListId] = payload;
   }),
+  removePlaylists: action((state, payload) => {
+    delete state.data[payload];
+  }),
   
   getPlayLists: thunk( async ({addPlaylists, setError, setLoading}, playListId, {getState}) =>{
     if(getState().data[playListId]) {
