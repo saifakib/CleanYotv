@@ -7,13 +7,12 @@ import { useStoreState } from 'easy-peasy';
 const PlayList = () => {
     const playlists = useStoreState((state) => state.playlists.data );
     let { playListId } = useParams();
-    const current = playlists[playListId];
+    const playlist = playlists[playListId];
 
-    if(!current) return;
+    if(!playlist) return;
   
-    const {playListTitle, playListDescription, playListThumnails, playlistItems} = current;
+    const {playListTitle, playListDescription, playListThumnails, playlistItems} = playlist;
 
-    // console.log(playlistItems)
     return (
     <Box sx={{ flexGrow: 1 }}>
         <Grid container spacing={2}>
@@ -32,8 +31,8 @@ const PlayList = () => {
             <Grid item xs={7} ml={5}>
                 {playlistItems.length > 0 && (
                     <>
-                        {playlistItems.map((item) => ( 
-                            <SingleplaylistItem key={item.videoId} item={item} />
+                        {playlistItems.map((item, index) => ( 
+                            <SingleplaylistItem key={item.videoId} item={item} index={index}/>
                         ))}
                     </>
                 )}                       

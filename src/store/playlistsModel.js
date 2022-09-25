@@ -1,9 +1,11 @@
 import { action, thunk, persist } from "easy-peasy";
 import getPlayList from "../api";
+import getPlayList_id from "../utils/isValidateURL";
+
 
 const playlistsModel = persist({
   data: {},
-  error: '',
+  error: "",
   loading: false,
 
   setError: action((state, payload) => {
@@ -19,14 +21,17 @@ const playlistsModel = persist({
     delete state.data[payload];
   }),
   
-  getPlayLists: thunk( async ({addPlaylists, setError, setLoading}, playListId, {getState}) =>{
+  getPlayLists: thunk( async ({addPlaylists, setError, setLoading}, playListId, {getState, getStoreActions}) =>{
     if(getState().data[playListId]) {
       return;
     }
     setLoading(true);
     try {
+      playListId = getPlayList_id(playListId);
       const playlist = await getPlayList(playListId);
       addPlaylists(playlist);
+      getStoreActions().recentPlaylists.addToRecent(playListId);
+      setError("")
     } catch (err) {
       setError(err.response?.data?.error?.message || "Something went wrong !!")
     } finally {

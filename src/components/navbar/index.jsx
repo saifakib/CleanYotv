@@ -4,7 +4,7 @@ import {AppBar, Box, Toolbar, Typography,Button, Container, Stack, Link } from "
 
 import PlayListForm from "../playlist-form";
 
-const Navbar = ({ getPlayListId }) => {
+const Navbar = () => {
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -38,7 +38,7 @@ const Navbar = ({ getPlayListId }) => {
               </Link>
             </Stack>
             <Button variant="contained" size="large" onClick={ handleClickOpen }>Add Playlist</Button>
-            <PlayListForm open={open} handleClose={handleClose} getPlayListId={getPlayListId} />
+            <PlayListForm open={open} handleClose={handleClose} />
           </Toolbar>
         </Container>
       </AppBar>

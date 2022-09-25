@@ -1,32 +1,36 @@
 import React from "react";
 import { BrowserRouter, Routes, Route  } from "react-router-dom";
-import { useStoreActions } from 'easy-peasy';
+import { useStoreState } from 'easy-peasy';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import CssBaseline from "@mui/material/CssBaseline";
+import { Container } from "@mui/material";
+
 import Navbar from "../components/navbar";
 import Home from "../pages/home";
 import Favourite from "../pages/favourites";
 import Recent from "../pages/recents";
 import Notfound from "../pages/not-found";
 import Player from "../pages/player";
-import { Container } from "@mui/material";
-
 import PlayList from "../pages/playlist";
+import AlertUI from "../components/alert";
 
 
 const App = () => {
 
-  const [getPlayLists, addToRecent] = useStoreActions((action) => [action.playlists.getPlayLists, action.recentPlaylists.addToRecent])
-  const getPlayListId = (PlayListId) => {
-    getPlayLists(PlayListId);
-    addToRecent(PlayListId);
-  }; 
+  const [ error, loading ] = useStoreState((state) => [ state.playlists.error, state.playlists.loading ])
 
   return (
     <>
       <CssBaseline />
       <BrowserRouter>
-        <Navbar getPlayListId={getPlayListId} />
+        <Navbar/>
+        { loading && ( 
+          <Container align='center' sx={{ mt: 5}}>
+           <CircularProgress />
+          </Container>
+        ) }
+        {error.length !== 0 && <AlertUI error={error} />}
         <Container maxWidth={'lg'} sx={{ my: 2 }}>
           <Routes>
             <Route path="/" element={<Home />} />

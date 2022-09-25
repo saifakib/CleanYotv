@@ -1,16 +1,18 @@
 import { useState } from 'react';
 import { Button, TextField, Dialog, DialogActions, DialogContent, DialogTitle } from '@mui/material';
+import { useStoreActions } from 'easy-peasy';
 
-const PlayListForm = ({ open, handleClose, getPlayListId }) => {
+const PlayListForm = ({ open, handleClose }) => {
+
+  const [getPlayLists] = useStoreActions((action) => [action.playlists.getPlayLists]);
 
      const [state, setState] = useState("");
 
      const handleSubmit = () => {
-        // TODO: handle url letter
         if(!state) {
             alert("Invalid Playlist!!")
         } else {
-            getPlayListId(state);
+            getPlayLists(state);
             setState("");
             handleClose();
         }

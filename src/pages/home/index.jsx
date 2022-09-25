@@ -1,32 +1,22 @@
-import { Grid } from "@mui/material";
-import PlayListCardItem from "../../components/playlist-card-item";
-
 import { useStoreState } from 'easy-peasy';
+import Typography from "@mui/material/Typography";
+import Container from "@mui/material/Container";
+import PlaylistCard from '../../components/playlist-card/'
 
 const Home = () => {
-  const [playlists, error, loading] = useStoreState((state) => [
-    state.playlists.data,
-    state.playlists.error,
-    state.playlists.loading,
+  const [playlists] = useStoreState((state) => [
+    state.playlists.data
   ]);
 
   let playlistArray = Object.values(playlists);
   return (
     <>
-      {playlistArray.length > 0 && (
-        <Grid container>
-          {playlistArray.map((item) => (
-            <Grid item xl={12} xs={6} md={4} lg={3} mb={2}>
-              <PlayListCardItem
-                key={item.playListId}
-                playlistId={item.playListId}
-                playListTitle={item.playListTitle}
-                playListThumnails={item.playListThumnails}
-                channelTitle={item.channelTitle}
-              />
-            </Grid>
-          ))}
-        </Grid>
+      {playlistArray.length > 0 ? (
+        <PlaylistCard playlistArray={playlistArray}/>
+      ) : (
+        <Container align='center'>
+          <Typography variant="h2" color={'black'}>No Recent Playlists</Typography>
+        </Container>
       )}
     </>
   );
