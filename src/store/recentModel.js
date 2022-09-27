@@ -8,7 +8,7 @@ const recentModel = persist({
             state.items.unshift(playListId);
         }
         if(state.items.length > 4) {
-            state.items.slice(0,8);
+            state.items = state.items.slice(0,4);
         }
     }),
     removeFromRecent: action((state, playListId) => {
