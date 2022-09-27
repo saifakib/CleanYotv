@@ -19,7 +19,7 @@ const Recent = () => {
         <PlaylistCard playlistArray={playlistArray}/>
       ) : (
         <Container align='center'>
-          <Typography variant="h2" color={'black'}>No Recent Playlists</Typography>
+          <Typography variant="h4" color={'black'} sx={{ fontWeight: 'bold', marginTop: '2rem' }}>NO RECENT PLAYLISTS</Typography>
         </Container>
       )}
     </>

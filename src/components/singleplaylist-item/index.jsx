@@ -11,12 +11,12 @@ const SingleplaylistItem = ({ item, index }) => {
                     <Typography variant="subtitle1" align="center" sx={{ marginLeft: '10px', marginTop: '2.7rem' }}> {Number(index+1)}</Typography>
                     <CardMedia
                         component="img" sx={{ width: 150, height: 100, padding: '1rem'}}
-                        image={item.thumbnail.url}
-                        alt={item.thumbnail.url}
+                        image={item.thumbnail?.url}
+                        alt={item.title}
                     />
                     <Box sx={{ display: 'flex', flexDirection: 'column' }}>
                         <CardContent sx={{ flex: '1 0 auto' }}>
-                            <Typography component="div" variant="h7" sx={{ marginTop: '1rem'}}>{item.title}</Typography>
+                            <Typography component="div" variant="subtitle2" sx={{ marginTop: '1rem'}}>{item.title}</Typography>
                         </CardContent>
                     </Box>
                 </Card>

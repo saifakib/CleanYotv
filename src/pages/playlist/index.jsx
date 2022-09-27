@@ -11,7 +11,7 @@ const PlayList = () => {
 
     if(!playlist) return;
   
-    const {playListTitle, playListDescription, playListThumnails, playlistItems} = playlist;
+    const {playListTitle, playListDescription, playListThumnails, playlistItems, channelTitle} = playlist;
 
     return (
     <Box sx={{ flexGrow: 1 }}>
@@ -25,8 +25,9 @@ const PlayList = () => {
                     alt="Paella dish"
                     />
                 </Card>
-                <Typography variant="h6">{playListTitle}</Typography>
-                <Typography variant="subtitle1" color="text.secondary" component="div" mr={1}>{playListDescription}</Typography>
+                <Typography variant="h6" sx={{ marginTop: '2rem'}}>{playListTitle}</Typography>
+                <Typography variant="overline" sx={{ marginBottom: '1rem'}}>{playlistItems.length} Videos  -  {channelTitle}</Typography>
+                <Typography variant="subtitle2" color="text.secondary" component="div" mr={1}>{playListDescription}</Typography>
             </Grid>
             <Grid item xs={7} ml={5}>
                 {playlistItems.length > 0 && (

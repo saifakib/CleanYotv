@@ -30,7 +30,9 @@ const playlistsModel = persist({
       playListId = getPlayList_id(playListId);
       const playlist = await getPlayList(playListId);
       addPlaylists(playlist);
-      getStoreActions().recentPlaylists.addToRecent(playListId);
+      if(playlist.playListId) {
+        getStoreActions().recentPlaylists.addToRecent(playlist.playListId);
+      }
       setError("")
     } catch (err) {
       setError(err.response?.data?.error?.message || "Something went wrong !!")

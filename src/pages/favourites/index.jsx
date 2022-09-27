@@ -18,7 +18,7 @@ const Favourite = () => {
         <PlaylistCard playlistArray={playlistArray}/>
       ) : (
         <Container align='center'>
-          <Typography variant="h2" color={'black'}>No Favourite Playlists</Typography>
+          <Typography variant="h4" color={'black'} sx={{ fontWeight: 'bold', marginTop: '2rem' }}>NO FAVOURITE PLAYLISTS</Typography>
         </Container>
       )}
     </>

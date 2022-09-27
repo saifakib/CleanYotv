@@ -4,10 +4,17 @@ const recentModel = persist({
     items: [],
 
     addToRecent: action((state, playListId) => {
-        state.items.unshift(playListId);
-        state.items.slice(0,8);
+        if(!state.items.includes(playListId)) {
+            state.items.unshift(playListId);
+        }
+        if(state.items.length > 4) {
+            state.items.slice(0,8);
+        }
     }),
     removeFromRecent: action((state, playListId) => {
+        if (!state.items.includes(playListId)) {
+            return;
+        }
         state.items = state.items.filter((item) => item != playListId)
     })
 });

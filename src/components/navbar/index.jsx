@@ -27,9 +27,9 @@ const Navbar = () => {
               </Link>
             </Stack>
             <Stack sx={{ flexGrow: 2 }} direction="row" spacing={2}>
-              <Link to="/" component={RouterLink} sx={{ textDecoration: 'none', color: 'black' }}>
+              {/* <Link to="/" component={RouterLink} sx={{ textDecoration: 'none', color: 'black' }}>
                 <Button variant="outlined">Home</Button>
-              </Link>
+              </Link> */}
               <Link to="/favourite" component={RouterLink} sx={{ textDecoration: 'none', color: 'black' }}>
                 <Button variant="outlined">Favourite</Button>
               </Link>
