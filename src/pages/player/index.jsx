@@ -5,6 +5,7 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import CardContent from "@mui/material/CardContent";
 import Box from "@mui/material/Box";
+import List from "@mui/material/List";
 import Card from "@mui/material/Card";
 import { useStoreState } from 'easy-peasy';
 import SingleplaylistItem from "../../components/singleplaylist-item";
@@ -42,6 +43,18 @@ const Player = () => {
         <Grid item xs={12} md={4}>
           <Card>
               <CardContent>
+              <List
+                sx={{
+                  width: '100%',
+                  maxWidth: 360,
+                  bgcolor: 'background.paper',
+                  position: 'relative',
+                  overflow: 'auto',
+                  maxHeight: 500,
+                  '& ul': { padding: 0 },
+                }}
+                subheader={<li />}
+              >
                   {playlistVideos && (
                   <Box>
                       <Typography
@@ -52,6 +65,7 @@ const Player = () => {
                       ))}
                   </Box>
               )}
+              </List>
               </CardContent>
           </Card>
         </Grid>
@@ -63,32 +77,3 @@ const Player = () => {
 
 export default Player;
 
-
-
-
-{/* <Box sx={{ flexGrow: 1 }}>
-<Grid container spacing={2}>
-    <Grid item xs={4}>
-        <Card sx={{ maxWidth: 345 }}>
-            <CardMedia
-            component="img"
-            height="194"
-            image={playListThumnails.url}
-            alt="Paella dish"
-            />
-        </Card>
-        <Typography variant="h6" sx={{ marginTop: '2rem'}}>{playListTitle}</Typography>
-        <Typography variant="overline" sx={{ marginBottom: '1rem'}}>{playlistItems.length} Videos  -  {channelTitle}</Typography>
-        <Typography variant="subtitle2" color="text.secondary" component="div" mr={1}>{playListDescription}</Typography>
-    </Grid>
-    <Grid item xs={7} ml={5}>
-        {playlistItems.length > 0 && (
-            <>
-                {playlistItems.map((item, index) => ( 
-                    <SingleplaylistItem key={item.videoId} item={item} playlistId={playlist.playListId} index={index}/>
-                ))}
-            </>
-        )}                       
-    </Grid>
-</Grid>
-</Box> */}

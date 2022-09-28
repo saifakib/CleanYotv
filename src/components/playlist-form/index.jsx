@@ -20,7 +20,7 @@ const PlayListForm = ({ open, handleClose }) => {
 
   return (
     <div>
-      <Dialog open={open} onClose={handleClose}>
+      <Dialog open={open} onClose={handleClose} fullWidth="true">
         <DialogTitle>Add Playlist</DialogTitle>
         <DialogContent>
           <TextField
