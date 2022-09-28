@@ -33,7 +33,7 @@ const PlayList = () => {
                 {playlistItems.length > 0 && (
                     <>
                         {playlistItems.map((item, index) => ( 
-                            <SingleplaylistItem key={item.videoId} item={item} index={index}/>
+                            <SingleplaylistItem key={item.videoId} item={item} playlistId={playlist.playListId} index={index}/>
                         ))}
                     </>
                 )}                       

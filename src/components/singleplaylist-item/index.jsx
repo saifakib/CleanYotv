@@ -2,10 +2,10 @@ import { Typography, Box, Card, CardMedia, CardContent, Divider } from "@mui/mat
 import { Link as RouteLink} from "react-router-dom";
 import { Link, Stack } from '@mui/material';
 
-const SingleplaylistItem = ({ item, index }) => {
+const SingleplaylistItem = ({ item, playlistId, index }) => {
     return (
         <>
-        <Link to={`/player/${item.contentDetails.videoId}`} underline="none" component={RouteLink}>
+        <Link to={`/player/${item.contentDetails.videoId}/${playlistId}/${index+1}`} underline="none" component={RouteLink}>
             <Stack>
                 <Card sx={{ display: 'flex', backgroundColor: '#DCDCDC' }}>
                     <Typography variant="subtitle1" align="center" sx={{ marginLeft: '10px', marginTop: '2.7rem' }}> {Number(index+1)}</Typography>

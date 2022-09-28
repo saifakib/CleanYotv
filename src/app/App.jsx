@@ -37,7 +37,7 @@ const App = () => {
             <Route path="/favourite" element={<Favourite />}/>
             <Route path="/recent" element={<Recent />}/>
             <Route path="/playlist/:playListId" element={<PlayList />} />
-            <Route path="/player/:videoId" element={<Player />}/>
+            <Route path="/player/:videoId/:playListId/:index" element={<Player />}/>
             <Route path="*" element={<Notfound />}/>
           </Routes>
         </Container>

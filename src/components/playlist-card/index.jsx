@@ -6,7 +6,7 @@ const PlaylistCard = ({ playlistArray }) => {
     return (
         <Grid container>
           {playlistArray.map((item) => (
-            <Grid item xl={12} xs={6} md={4} lg={3} mb={2}>
+            <Grid item xs={12} sm={6} md={4} lg={3} mb={2}>
               <PlayListCardItem
                 key={item.playListId}
                 playlistId={item.playListId}
