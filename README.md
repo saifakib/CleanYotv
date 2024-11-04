@@ -24,7 +24,7 @@ Welcome to **Clean YouTube**! This web application allows users to easily view Y
 <p align="center">
    <img src="./public/home.png" width="800px" alt="Home Page" style="border: 1px solid #ddd; margin: 1px;">
    <img src="./public/add.png" width="800px" alt="Add Playlist" style="border: 1px solid #ddd; margin: 1px;">
-   <img src="./public/home-playlist.pn" width="800px" alt="Add Playlist" style="border: 1px solid #ddd; margin: 1px;">
+   <img src="./public/home-playlist.png" width="800px" alt="Add Playlist" style="border: 1px solid #ddd; margin: 1px;">
    <img src="./public/favourite.png" width="800px" alt="Favorites" style="border: 1px solid #ddd; margin: 1px;">
    <img src="./public/playlist-details.png" width="800px" alt="Playlist Details" style="border: 1px solid #ddd; margin: 1px;">
    <img src="./public/play.png" width="800px" alt="Playing Video" style="border: 1px solid #ddd; margin: 1px;">
