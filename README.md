@@ -34,8 +34,8 @@ Welcome to **Clean YouTube**! This web application allows users to easily view Y
 ## 🚀 Technology Stack
 
 - **Frontend:** Material UI
-- **Framework:** React (or any other relevant framework)
-- **Other:** Youtube API, Custom-hook, Axios
+- **Framework:** React
+- **Other:** Youtube API, Easy-Peasy, Axios
 - **Deployment:** Netlify
 
 ## ⚙️ How It Works
